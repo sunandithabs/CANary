@@ -1,0 +1,17 @@
+[project]
+name = "canary"
+version = "0.1.0"
+description = "Real-time observability and intrusion detection for CAN bus networks"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "Sunanditha B S"}]
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+include = ["canary*"]

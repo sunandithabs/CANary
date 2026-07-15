@@ -87,9 +87,7 @@ run_dashboard(sim.stats, sim.detector)
 
 ## design decisions
 
-arbitration is modeled as priority scheduling, not bit-level contention. that gets the real effect — latency under load, deterministic priority — without simulating electrical signaling nothing downstream needs.
-
-c shows up exactly once, for the crc-15 checksum, because that's genuinely bit-level, hardware-adjacent work. it's not there for its own sake.
+arbitration is modeled as priority scheduling, not bit-level contention. that gets the real effect such as latency under load, deterministic priority, without simulating electrical signaling nothing downstream needs.
 
 a few protocol features are left out on purpose: bit-stuffing, ack slots, error frames, remote frames, overload frames, the bus-off state machine, exact bit-level arbitration. none of them change what the detector can observe, so building them would just be chasing can-spec completeness instead of detection tooling.
 

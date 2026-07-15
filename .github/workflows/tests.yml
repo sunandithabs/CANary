@@ -5,19 +5,29 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Build native CRC-15 component
         run: bash canary/native/build.sh
+
       - name: Set up vcan0 for SocketCAN tests
         run: |
-          sudo modprobe vcan
-          sudo ip link add dev vcan0 type vcan
-          sudo ip link set up vcan0
+          if sudo modprobe vcan; then
+            sudo ip link add dev vcan0 type vcan
+            sudo ip link set up vcan0
+            echo "SocketCAN enabled."
+          else
+            echo "vcan module unavailable. SocketCAN tests will be skipped."
+          fi
+
       - name: Run tests
         run: PYTHONPATH=. python -m pytest tests/ -v

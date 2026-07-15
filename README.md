@@ -1,4 +1,6 @@
 # canary
+[![tests](https://github.com/sunandithabs/canary/actions/workflows/tests.yml/badge.svg)](https://github.com/sunandithabs/canary/actions/workflows/tests.yml)
+
 can bus intrusion detection framework.
 can, plus "canary in the coal mine." runs on almost every car, tractor, and industrial machine built in the last thirty years.
 

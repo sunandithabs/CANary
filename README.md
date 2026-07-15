@@ -60,7 +60,7 @@ everything downstream of the bus talks to it only through `businterface.subscrib
 
 ```bash
 pip install -r requirements.txt
-bash canary/native/build.sh          # build the C CRC-15 component
+bash canary/native/build.sh   
 PYTHONPATH=. python -m canary.simulator.generate_samples
 ```
 
@@ -72,7 +72,6 @@ from canary.simulator import Simulator
 from canary.dashboard import run_dashboard
 
 sim = Simulator("live_demo.csv")
-# in practice: run sim.step() on a timer thread, then:
 run_dashboard(sim.stats, sim.detector)
 ```
 
